@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 09:23:34 by ubegona           #+#    #+#             */
-/*   Updated: 2023/01/13 09:24:48 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/21 09:26:25 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,16 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (resul * minus);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	unsigned long	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:16:58 by ubegona           #+#    #+#             */
-/*   Updated: 2023/01/13 14:16:45 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/23 09:37:33 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	get_time(t_philo *philo)
 	struct timeval	current_time;
 
 	gettimeofday(&current_time, NULL);
-	return ((current_time.tv_sec * 1000) + (current_time.tv_usec / 1000) - philo -> data -> start_time);
+	return ((current_time.tv_sec * 1000)
+		+ (current_time.tv_usec / 1000) - philo -> data -> start_time);
 }
 
 int	get_start(void)

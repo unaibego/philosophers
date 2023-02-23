@@ -6,14 +6,14 @@
 #    By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2023/01/13 14:12:48 by ubegona          ###   ########.fr        #
+#    Updated: 2023/02/23 09:35:35 by ubegona          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OBJS = $(SRCS:.c=.o)
-SRCS =  main.c libft.c fill_up.c errors.c time.c
-CC = gcc -g -pthread
-NAME = philosophers
+SRCS =  main.c libft.c fill_up.c errors.c time.c print_philo.c free_all.c checking_all.c
+CC = gcc -pthread -g
+NAME = philo
 CFLAGS = -Wall -Wextra -Werror
  
 all: $(NAME)
