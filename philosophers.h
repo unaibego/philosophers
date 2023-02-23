@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 09:12:11 by ubegona           #+#    #+#             */
-/*   Updated: 2023/02/23 09:35:18 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/23 13:14:28 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	*philosopher(void *philo);
 void	take_fork(void *philo);
 int		check_meals(t_philo *philo);
 void	checking_all(t_philo *philo);
+int		check_deads(t_philo *philo);
 // ********************************* print_philo.c ***************************
 void	filo_printf(int time, int philo, char *string, t_philo	*p);
 // ********************************* errors.c ***************************

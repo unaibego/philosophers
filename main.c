@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:13:19 by ubegona           #+#    #+#             */
-/*   Updated: 2023/02/23 09:52:50 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:51:17 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@ void	take_fork(void *philo)
 	p = (t_philo *)philo;
 	pthread_mutex_lock(&p->data->mutex[p->label]);
 	filo_printf(get_time(p), p -> label, "has taken a fork", p);
+	pthread_mutex_lock(&p->data->mutex_die);
 	p->fork = 1;
+	pthread_mutex_unlock(&p->data->mutex_die);
 	pthread_mutex_lock(&p->data->mutex[(p->label + 1) % p->data->n_philo]);
+	pthread_mutex_lock(&p->data->mutex_die);
 	p -> last_eat = get_time(p);
+	pthread_mutex_unlock(&p->data->mutex_die);
 	p->next_philo->fork = 1;
 	filo_printf(get_time(p), p -> label, "is eating", p);
+	pthread_mutex_lock(&p->data->mutex_die);
 	p ->count_eat++;
+	pthread_mutex_unlock(&p->data->mutex_die);
+	pthread_mutex_lock(&p->data->mutex_die);
+	pthread_mutex_unlock(&p->data->mutex_die);
 	ft_sleep(p -> data -> time_eat, p);
+	pthread_mutex_lock(&p->data->mutex_die);
+	pthread_mutex_unlock(&p->data->mutex_die);
 	pthread_mutex_unlock(&p->data->mutex[(p->label + 1) % p->data->n_philo]);
 	pthread_mutex_unlock(&p->data->mutex[p->label]);
 }
@@ -43,7 +53,11 @@ void	*philosopher(void *philo)
 	{
 		take_fork(philo);
 		filo_printf(get_time(p), p -> label, "is sleeping", p);
+		pthread_mutex_lock(&p->data->mutex_die);
+		pthread_mutex_unlock(&p->data->mutex_die);
 		ft_sleep(p -> data -> time_sleep, p);
+		pthread_mutex_lock(&p->data->mutex_die);
+		pthread_mutex_unlock(&p->data->mutex_die);
 		filo_printf(get_time(p), p -> label, "is thinking", p);
 		i++;
 	}
