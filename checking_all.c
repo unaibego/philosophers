@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:33:56 by ubegona           #+#    #+#             */
-/*   Updated: 2023/02/23 13:18:52 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/27 09:20:22 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	check_deads(t_philo *philo)
 		if ((get_time(philo) - philo->last_eat) > philo -> data -> time_die)
 		{
 			pthread_mutex_lock(&philo->data->mutex_die);
-			printf("%d-->%d %s\n", get_time(philo), philo -> label, "is dead");
+			printf("%d-->%d %s\n", get_time(philo), philo -> label + 1,
+				"is dead");
 			usleep(200000);
 			free_all(philo);
 			exit(0);
@@ -54,7 +55,7 @@ void	checking_all(t_philo *philo)
 	int	i;
 
 	i = 0;
-	while (check_meals(philo))
+	while (1)
 	{
 		check_deads(philo);
 		i++;
