@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 09:33:56 by ubegona           #+#    #+#             */
-/*   Updated: 2023/02/27 09:20:22 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/27 12:26:16 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_deads(t_philo *philo)
 			pthread_mutex_lock(&philo->data->mutex_die);
 			printf("%d-->%d %s\n", get_time(philo), philo -> label + 1,
 				"is dead");
-			usleep(200000);
+			ft_sleep(200000, philo);
 			free_all(philo);
 			exit(0);
 			return (1);
@@ -55,9 +55,8 @@ void	checking_all(t_philo *philo)
 	int	i;
 
 	i = 0;
-	while (1)
+	while (!check_deads(philo))
 	{
-		check_deads(philo);
 		i++;
 	}
 }

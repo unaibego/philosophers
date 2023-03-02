@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:13:19 by ubegona           #+#    #+#             */
-/*   Updated: 2023/02/27 09:19:37 by ubegona          ###   ########.fr       */
+/*   Updated: 2023/02/27 12:37:12 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*philosopher(void *philo)
 	p = (t_philo *)philo;
 	i = 0;
 	if ((p->label + 1) % 2 == 0)
-		usleep(p->data->time_eat);
+		ft_sleep(p->data->time_eat, p);
 	while (i != p->data->amount_eat)
 	{
 		take_fork(philo);
